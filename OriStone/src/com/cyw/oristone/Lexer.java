@@ -3,13 +3,13 @@ package com.cyw.oristone;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * 词法分析器
+ * 可以根据需要逐行读取源代码
  * @author cyw
  *
  */
@@ -26,7 +26,8 @@ public class Lexer {
 		reader = new LineNumberReader(r);
 	}
 	/**
-	 * 可以读取当前的token
+	 * 从源代码头部开始逐一读取单词。
+	 * 读取当前的token
 	 * @return
 	 * @throws ParseException
 	 */
@@ -38,7 +39,10 @@ public class Lexer {
 		}
 	}
 	/**
-	 * 
+	 * 预读
+	 * 可返回read()即将返回的单词之后的第i个单词。
+	 * 对于抽象语法树的构造至关重要。支持 回溯
+	 * 预先判断抽象语法树的构造方式
 	 * @param i
 	 * @return
 	 * @throws ParseException
@@ -49,7 +53,6 @@ public class Lexer {
 		}else
 			return Token.EOF;
 	}
-	
 	
 	public boolean fillQueue(int i) throws ParseException{
 		while(i>=queue.size()){
@@ -82,7 +85,7 @@ public class Lexer {
 				addToken(lineNo, matcher);
 				pos = matcher.end();
 			}else
-				throw new ParseException("bad token at line "+ lineNo, lineNo);
+				throw new ParseException("bad token at line "+ lineNo);
 		}
 		queue.add(new IdToken(lineNo, Token.EOL));
 	}
