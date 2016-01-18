@@ -31,4 +31,8 @@ oriStone
 
 AST:
 使用token保存字段数据
+BNF 巴克斯范式：(与正则表达式的区别是 在于具体是以单词为单位检查匹配还是以字符为单位检查)。包含非终结符
+	factor:	 		NUMBER | "(" expression ")"
+	term:			factor { ( "*" | "/" ) factor }
+	expression:	term { ( "+" | "-" ) term }
 
