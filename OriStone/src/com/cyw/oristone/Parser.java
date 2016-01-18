@@ -13,6 +13,7 @@ import com.cyw.oristone.ast.ASTree;
 
 /**
  * 解析库
+ * 将BNF语法语句，转换成java语句
  * @author cyw
  *
  */
@@ -301,6 +302,13 @@ public class Parser {
         elements = p.elements;
         factory = p.factory;
     }
+    
+    /**
+     * 成功执行语法分析后以抽象语法树的形式返回分析结果
+     * @param lexer
+     * @return
+     * @throws ParseException
+     */
     public ASTree parse(Lexer lexer) throws ParseException {
         ArrayList<ASTree> results = new ArrayList<ASTree>();
         for (Element e: elements)

@@ -2,6 +2,11 @@ package com.cyw.oristone.ast;
 
 import java.util.List;
 
+/**
+ * ¸ººÅ
+ * @author cyw
+ *
+ */
 public class NegativeExpr extends ASTList {
 
 	public NegativeExpr(List<ASTree> list) {

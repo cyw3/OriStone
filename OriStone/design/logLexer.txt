@@ -1,18 +1,3 @@
-package com.cyw.oristone;
-
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/**
- * 词法分析器
- * 可以根据需要逐行读取源代码
- * @author cyw
- *
- */
 public class Lexer {
 	public static String regexPat = "\\s*((//.*)|([0-9]+)|(\"(\\\\\"|\\\\\\\\|\\\\n|[^\"])*\")"
 			+"|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\\|\\||\\p{Punct})?";
@@ -142,20 +127,31 @@ public class Lexer {
 			return value;
 		}
 	}
-	
+	/*
+	protected static class IdToken extends Token {
+        private String text; 
+        protected IdToken(int line, String id) {
+            super(line);
+            text = id;
+        }
+        public boolean isIdentifier() { return true; }
+        public String getText() { return text; }
+    }
+	*/
 	protected static class IdToken extends Token {
 		private String text;
 		protected IdToken(int line, String id){
 			super(line);
 			text = id;
 		}
-		public boolean isIdentifier() {
+		public boolean IsIdentifier() {
 			return true;
 		}
 		public String getText(){
 			return text;
 		}
-    }
+	}
+	
 	protected static class StrToken extends Token {
 		private String literal;
 		StrToken(int line, String str){
