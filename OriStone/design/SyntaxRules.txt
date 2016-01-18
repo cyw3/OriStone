@@ -1,0 +1,16 @@
+OriStone语言的语法定义
+OP:双目运算符		（没有考虑运算符的优先级）
+可以使用语法分析器自动生成工具，比如ycc
+这里使用的是 Parser库，将BNF写成的语法规则改写成java语言程序
+
+primary		:			"(" expr ")" | NUMBER | IDENTIFIER | STRING
+factor		:			"-" primary | primary
+expr			:			factor { OP factor }
+block		:			"{" [ statement ] { ( ";" | EOL ) [ statement ] } "}"
+simple		:			expr
+statement	:			"if" expr block [ "else" block ]
+							| "while" expr block
+							| simple
+program	:			[ statement ] ( ";" | EOL )							
+
+
