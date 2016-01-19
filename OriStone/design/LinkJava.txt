@@ -1,0 +1,12 @@
+关联java语言 
+使用java原生代码
+	类似于java调用C语言的等其他语言的携程的函数。
+	
+原生函数将由Argument类中的eval方法调用。
+
+NativeFunction
+	方法：invoke()，以args参数调用java语言的static函数
+	
+调的原生函数在Natives类中：
+	 一开始先将原生函数，存入环境之中，当运行时遇到原生函数，在识别，
+从环境中调用原生函数，invoke()，在调用到Natives类中的static方法
