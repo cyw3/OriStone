@@ -1,0 +1,50 @@
+函数功能：
+	使用闭包（closure），是该语言可以将变量赋值为函数，或将函数作为参数传递给其他函数
+
+语法规则：
+	1、def定义
+	2、放在最外层代码，即用户无法再代码块中定义函数
+	3、无return语句，最后执行的语句（表达式）的计算结果将作为函数的返回值返回
+	4、可将返回值赋值给变量
+	5、函数单独使用是，括号可以省略
+	
+
+与函数有关的语法规则：(在语法分析的BNF的基础上添加的)
+//定义
+param		:IDENTIFIER
+params		:param { "," param }
+param_list	:"(" [ params ] ")"
+def			:"def" IDENTIFIER param_list block
+//调用
+args			:expr { "," expr }
+//实参序列
+postfix		:"(" [ args ] ")"
+primary		:( "(" expr ")" | NUMBER | IDENTIFIER | STRING ){ postfix }
+simple		:expr [ args ]
+program	:[ def | statement ] ( ";" | EOL )
+
+所以更新 BasciParser
+maybe
+option
+insertChoice
+
+
+重新设计环境，使之支持局部变量
+空间范围、时间范围
+作用域（scope）与生存周期（extent）
+所以，设计为嵌套结构，为每一种作用域准备一个单独的环境，并根据需要嵌套环境。
+
+改进：
+	可以为代码块提供单独的作用域
+	生存周期通过NestedEnv对象的创建以及清除（如垃圾回收）时机来控制
+
+函数定义时，会向环境添加该函数名以及对象。函数由Function对象表示
+	调用函数是，程序先从环境中获取表示函数的Functin对象，之后，程序将创建一个新的环境以存储参数以及局部变量
+计算参数的值并添加到新的环境中。最后，语法分析器将通过Function对象构造函数本身的抽象语法树，并在刚才创建的环境中执行
+
+
+
+
+
+
+
