@@ -21,6 +21,7 @@ import com.cyw.oristone.ast.WhileStmnt;
 
 /**
  * 使用了gluonj系统，jar包
+ * 计算，基本都是基于java下的运算符计算
  * @author cyw
  *
  */

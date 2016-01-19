@@ -20,12 +20,13 @@ public class Runner {
     	 */
         Loader.run(BasicInterpreter.class, args, BasicEvaluator.class);
     }
-//    以下是示例代码
-//    sum = 0
-//    		i = 1
-//    		while i<10 {
-//    			sum = sum +i;
-//    			i = i+1;
-//    		}
-//    		sum
+/**    以下是示例代码
+sum = 0
+i = 1
+while i<10 {
+	sum = sum +i;
+	i = i+1;
+}
+sum
+*/
 }
