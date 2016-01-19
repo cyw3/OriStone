@@ -32,6 +32,7 @@ import com.cyw.oristone.basic.BasicEvaluator.BlockEx;
     @Reviser public static class DefStmntEx extends DefStmnt {
         public DefStmntEx(List<ASTree> c) { super(c); }
         public Object eval(Environment env) {
+        	//创建function，将环境传给function
             ((EnvEx)env).putNew(name(), new Function(parameters(), body(), env));
             return name();
         }
