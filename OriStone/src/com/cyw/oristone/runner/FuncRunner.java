@@ -1,7 +1,8 @@
-package com.cyw.oristone;
+package com.cyw.oristone.runner;
 
 import javassist.gluonj.util.Loader;
 
+import com.cyw.oristone.FuncInterpreter;
 import com.cyw.oristone.basic.FuncEvaluator;
 
 public class FuncRunner {

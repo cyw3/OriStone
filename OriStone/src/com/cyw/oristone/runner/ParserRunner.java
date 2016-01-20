@@ -1,4 +1,4 @@
-package com.cyw.test;
+package com.cyw.oristone.runner;
 
 import com.cyw.oristone.BasicParser;
 import com.cyw.oristone.CodeDialog;
@@ -13,7 +13,7 @@ public class ParserRunner {
         BasicParser bp = new BasicParser();
         while (l.peek(0) != Token.EOF) {
             ASTree ast = bp.parse(l);
-            System.out.println("=> " + ast.toString());
+            System.out.println(">>> " + ast.toString());
         }
     }
 }

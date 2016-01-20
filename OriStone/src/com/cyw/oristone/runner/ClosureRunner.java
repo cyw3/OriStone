@@ -1,4 +1,7 @@
-package com.cyw.oristone;
+package com.cyw.oristone.runner;
+
+import com.cyw.oristone.ClosureEvaluator;
+import com.cyw.oristone.ClosureInterpreter;
 
 import javassist.gluonj.util.Loader;
 

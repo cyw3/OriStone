@@ -1,5 +1,6 @@
-package com.cyw.oristone;
+package com.cyw.oristone.runner;
 
+import com.cyw.oristone.BasicInterpreter;
 import com.cyw.oristone.basic.BasicEvaluator;
 
 import javassist.gluonj.util.Loader;

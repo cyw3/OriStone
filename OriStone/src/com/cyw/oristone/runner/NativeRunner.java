@@ -1,7 +1,9 @@
-package com.cyw.oristone;
+package com.cyw.oristone.runner;
 
 import javassist.gluonj.util.Loader;
 
+import com.cyw.oristone.ClosureEvaluator;
+import com.cyw.oristone.NativeInterpreter;
 import com.cyw.oristone.basic.NativeEvaluator;
 
 public class NativeRunner {
