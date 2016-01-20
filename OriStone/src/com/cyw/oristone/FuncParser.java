@@ -15,11 +15,11 @@ public class FuncParser extends BasicParser {
     Parser params = rule(ParameterList.class)
                         .ast(param).repeat(rule().sep(",").ast(param));
     Parser paramList = rule().sep("(").maybe(params).sep(")");
-    Parser def = rule(DefStmnt.class)
+    protected Parser def = rule(DefStmnt.class)
                      .sep("def").identifier(reserved).ast(paramList).ast(block);
     Parser args = rule(Arguments.class)
                       .ast(expr).repeat(rule().sep(",").ast(expr));
-    Parser postfix = rule().sep("(").maybe(args).sep(")");
+    protected Parser postfix = rule().sep("(").maybe(args).sep(")");
 
     public FuncParser() {
         reserved.add(")");

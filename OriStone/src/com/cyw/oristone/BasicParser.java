@@ -86,7 +86,7 @@ import com.cyw.oristone.ast.WhileStmnt;
 //}
 
 public class BasicParser {
-    HashSet<String> reserved = new HashSet<String>();
+    protected HashSet<String> reserved = new HashSet<String>();
     Operators operators = new Operators();
     Parser expr0 = rule();
     Parser primary = rule(PrimaryExpr.class)
@@ -103,14 +103,14 @@ public class BasicParser {
         .sep("{").option(statement0)
         .repeat(rule().sep(";", Token.EOL).option(statement0))
         .sep("}");
-    Parser simple = rule(PrimaryExpr.class).ast(expr);
+    protected Parser simple = rule(PrimaryExpr.class).ast(expr);
     Parser statement = statement0.or(
             rule(IfStmnt.class).sep("if").ast(expr).ast(block)
                                .option(rule().sep("else").ast(block)),
             rule(WhileStmnt.class).sep("while").ast(expr).ast(block),
             simple);
 
-    Parser program = rule().or(statement, rule(NullStmnt.class))
+    protected Parser program = rule().or(statement, rule(NullStmnt.class))
                            .sep(";", Token.EOL);
 
     public BasicParser() {

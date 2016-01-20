@@ -1,0 +1,32 @@
+design class:
+实现面向对象
+
+1、由类名后接.new组成的代码创建对象
+2、无法实现带参数的构造函数
+3、对象一旦创建，就会从上而下一次执行大括号中的类定义语句。
+4、{}之间能够出现def语句或者复制表达式
+5、如果赋值表达式额复制对象不是已有的全局变量，解释器就会将他识别为新添加的字段
+6、通过extends来实现继承
+7、不支持重载
+
+需要添加类与对象功能的语法规则：
+member 		: def | simple
+class_body	: "{" [ member ] { ( ";" | EOL ) [ member ] } "}"
+defclass		: "class" IDENTIFIER [ "extends" IDENTIFIER ] class_body
+postfix 			: "." IDENTIFIER | "(" [ args ] ")"
+program		: [ defclass | def | statement ] ( ";" | EOL )
+
+将会使用闭包来实现表示对象
+利用环境能够保存字段值的特性来表示对象
+
+
+
+
+
+
+
+
+
+
+
+
