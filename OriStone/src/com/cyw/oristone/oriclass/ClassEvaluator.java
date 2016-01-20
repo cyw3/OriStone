@@ -43,6 +43,11 @@ import com.cyw.oristone.oriclass.OriStoneObject.AccessException;
             return null;
         }
     }
+    /**
+     * 
+     * @author cyw
+     *
+     */
     @Reviser public static class DotEx extends Dot {
         public DotEx(List<ASTree> c) { super(c); }
         public Object eval(Environment env, Object value) {
@@ -53,6 +58,7 @@ import com.cyw.oristone.oriclass.OriStoneObject.AccessException;
                     NestedEnv e = new NestedEnv(ci.environment());
                     OriStoneObject so = new OriStoneObject(e);
                     e.putNew("this", so);
+                    //递归调用
                     initObject(ci, e);
                     return so;
                 }
@@ -66,12 +72,21 @@ import com.cyw.oristone.oriclass.OriStoneObject.AccessException;
             }
             throw new OriStoneException("bad member access: " + member, this);
         }
+        
+        /**
+         * 支持递归调用，实现继承
+         * 从最上层的父类开始依次添加字段与方法。以此实现方法的覆盖
+         * @param ci
+         * @param env
+         */
         protected void initObject(ClassInfo ci, Environment env) {
             if (ci.superClass() != null)
                 initObject(ci.superClass(), env);
             ((ClassBodyEx)ci.body()).eval(env);
         }
     }
+    
+    
     @Reviser public static class AssignEx extends BasicEvaluator.BinaryEx {
         public AssignEx(List<ASTree> c) { super(c); }
         @Override

@@ -1,0 +1,24 @@
+
+数组：
+1、数组中的类型无需保持一致
+2、也可以数组作为元素
+3、
+
+
+
+需要扩展语法规则（基于Class里面的）：
+elements		: expr { "," expr }
+primary			: ( “[” [ elements ] "]" | "(" expr ")" | NUMBER | IDENTIFER | STRING ) { postfix }
+postfix			: "(" [ args ] ")" | "[" expr "]"
+
+可以通过修改器，实现模块化
+	 * 独立于ClassEvaluator修改器
+	 * 两个修改器，在启动的时候，可以同时添加，同时修改
+	 * 可以通过修改器，进行组合
+
+
+关联数组：下表能够使用字符串或其他任意类型的值的数组。也就是哈希表
+
+
+
+

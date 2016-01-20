@@ -89,14 +89,14 @@ public class BasicParser {
     protected HashSet<String> reserved = new HashSet<String>();
     Operators operators = new Operators();
     Parser expr0 = rule();
-    Parser primary = rule(PrimaryExpr.class)
+    protected Parser primary = rule(PrimaryExpr.class)
         .or(rule().sep("(").ast(expr0).sep(")"),
             rule().number(NumberLiteral.class),
             rule().identifier(Name.class, reserved),
             rule().string(StringLiteral.class));
     Parser factor = rule().or(rule(NegativeExpr.class).sep("-").ast(primary),
                               primary);                               
-    Parser expr = expr0.expression(BinaryExpr.class, factor, operators);
+    protected Parser expr = expr0.expression(BinaryExpr.class, factor, operators);
 
     Parser statement0 = rule();
     Parser block = rule(BlockStmnt.class)

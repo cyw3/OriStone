@@ -20,6 +20,9 @@ program		: [ defclass | def | statement ] ( ";" | EOL )
 利用环境能够保存字段值的特性来表示对象
 
 
+缺点是：
+1、无法通过super()调用父类的方法
+
 
 
 
